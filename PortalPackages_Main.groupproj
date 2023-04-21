@@ -1,0 +1,36 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{D72DFDFF-D05F-41D6-BA7A-D75C1B69D095}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Lib\rtcPortal.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="rtcPortal">
+        <MSBuild Projects="Lib\rtcPortal.dproj"/>
+    </Target>
+    <Target Name="rtcPortal:Clean">
+        <MSBuild Projects="Lib\rtcPortal.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="rtcPortal:Make">
+        <MSBuild Projects="Lib\rtcPortal.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="rtcPortal"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="rtcPortal:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="rtcPortal:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
